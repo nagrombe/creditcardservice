@@ -9,6 +9,6 @@ public class ApplyForCreditCardResponse {
     private final Status status;
 
     public enum Status {
-        GRANTED
+        DENIED, GRANTED
     }
 }

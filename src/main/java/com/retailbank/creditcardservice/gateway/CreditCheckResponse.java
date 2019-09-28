@@ -9,6 +9,6 @@ public class CreditCheckResponse {
     private Score score;
 
     public enum Score {
-        HIGH
+        LOW, HIGH
     }
 }
