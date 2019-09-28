@@ -9,12 +9,12 @@ import org.springframework.web.client.RestTemplate;
 @SpringBootApplication
 public class CreditCardServiceApplication {
 
-	public static void main(String[] args) {
-		SpringApplication.run(CreditCardServiceApplication.class, args);
-	}
+    public static void main(String[] args) {
+        SpringApplication.run(CreditCardServiceApplication.class, args);
+    }
 
-	@Bean
-	public RestTemplate restTemplate() {
-		return new RestTemplate();
-	}
+    @Bean
+    public RestTemplate restTemplate() {
+        return new RestTemplate();
+    }
 }
