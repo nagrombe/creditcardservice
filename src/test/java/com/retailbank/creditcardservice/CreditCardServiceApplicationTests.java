@@ -39,7 +39,8 @@ public class CreditCardServiceApplicationTests {
                 .andExpect(status().isOk())
                 .andExpect(content()
                         .json("{" +
-                                "\"status\":\"GRANTED\"" +
+                                "\"status\":\"GRANTED\"," +
+                                "\"uuid\":\"66ce29f3-ae87-4097-94e8-60b3b10c3855\"" +
                                 "}"))
                 .andExpect(content().contentTypeCompatibleWith(APPLICATION_JSON));
     }
@@ -58,7 +59,8 @@ public class CreditCardServiceApplicationTests {
                 .andExpect(status().isOk())
                 .andExpect(content()
                         .json("{" +
-                                "\"status\":\"DENIED\"" +
+                                "\"status\":\"DENIED\"," +
+                                "\"uuid\":\"66ce29f3-ae87-4097-94e8-60b3b10c3855\"" +
                                 "}"))
                 .andExpect(content().contentTypeCompatibleWith(APPLICATION_JSON));
     }

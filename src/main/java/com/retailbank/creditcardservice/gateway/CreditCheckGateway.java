@@ -11,16 +11,17 @@ public class CreditCheckGateway {
     private final RestTemplate restTemplate;
     private final String creditCheckServiceBaseUrl;
 
-    public CreditCheckGateway(RestTemplate restTemplate, @Value("${creditcheckservice.baseurl}") String creditCheckServiceBaseUrl) {
+    public CreditCheckGateway(RestTemplate restTemplate,
+                              @Value("${creditcheckservice.baseurl}") String creditCheckServiceBaseUrl) {
         this.restTemplate = restTemplate;
         this.creditCheckServiceBaseUrl = creditCheckServiceBaseUrl;
     }
 
-    public CreditCheckResponse.Score doCreditCheckForCitizen(int citizenNumber) {
+    public CreditCheckResponse doCreditCheckForCitizen(int citizenNumber) {
         final String uri = UriComponentsBuilder.fromHttpUrl(creditCheckServiceBaseUrl)
                 .path("credit-scores")
                 .toUriString();
 
-        return restTemplate.postForObject(uri, new CreditCheckRequest(citizenNumber), CreditCheckResponse.class).getScore();
+        return restTemplate.postForObject(uri, new CreditCheckRequest(citizenNumber), CreditCheckResponse.class);
     }
 }

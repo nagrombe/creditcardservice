@@ -8,6 +8,9 @@ public class ApplyForCreditCardResponse {
     @Getter
     private final Status status;
 
+    @Getter
+    private final String uuid;
+
     public enum Status {
         DENIED, GRANTED
     }

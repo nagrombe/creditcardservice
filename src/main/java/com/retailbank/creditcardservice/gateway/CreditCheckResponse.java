@@ -8,6 +8,10 @@ public class CreditCheckResponse {
     @Setter
     private Score score;
 
+    @Getter
+    @Setter
+    private String uuid;
+
     public enum Score {
         LOW, HIGH
     }
