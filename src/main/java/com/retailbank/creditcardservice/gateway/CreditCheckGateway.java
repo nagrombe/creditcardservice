@@ -1,18 +1,23 @@
 package com.retailbank.creditcardservice.gateway;
 
-import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.util.UriComponentsBuilder;
 
-@RequiredArgsConstructor
 @Component
 public class CreditCheckGateway {
 
     private final RestTemplate restTemplate;
+    private final String creditCheckServiceBaseUrl;
+
+    public CreditCheckGateway(RestTemplate restTemplate, @Value("${creditcheckservice.baseurl}") String creditCheckServiceBaseUrl) {
+        this.restTemplate = restTemplate;
+        this.creditCheckServiceBaseUrl = creditCheckServiceBaseUrl;
+    }
 
     public CreditCheckResponse.Score doCreditCheckForCitizen(int citizenNumber) {
-        final String uri = UriComponentsBuilder.fromHttpUrl("http://localhost:8080")
+        final String uri = UriComponentsBuilder.fromHttpUrl(creditCheckServiceBaseUrl)
                 .path("credit-scores")
                 .toUriString();
 
