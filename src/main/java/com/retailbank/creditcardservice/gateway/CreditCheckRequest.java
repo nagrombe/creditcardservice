@@ -4,6 +4,7 @@ import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 
 import java.time.LocalDate;
+import java.util.UUID;
 
 @RequiredArgsConstructor
 public class CreditCheckRequest {
@@ -13,4 +14,7 @@ public class CreditCheckRequest {
 
     @Getter
     private final String requestedDate = LocalDate.now().toString();
+
+    @Getter
+    private final String uuid = UUID.randomUUID().toString();
 }

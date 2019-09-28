@@ -22,6 +22,14 @@ public class CreditCheckGateway {
                 .path("credit-scores")
                 .toUriString();
 
-        return restTemplate.postForObject(uri, new CreditCheckRequest(citizenNumber), CreditCheckResponse.class);
+        final CreditCheckRequest request = new CreditCheckRequest(citizenNumber);
+        final CreditCheckResponse creditCheckResponse = restTemplate.postForObject(uri, request, CreditCheckResponse.class);
+
+        assert creditCheckResponse != null;
+        if (!creditCheckResponse.getUuid().equals(request.getUuid())) {
+            throw new RuntimeException("If the UUID from the response don't match the UUID from the request, something is wrong!");
+        }
+
+        return creditCheckResponse;
     }
 }
